@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
+import Login from './pages/Auth/Login'
+import Registrasi from './pages/Auth/Registrasi'
+import LupaPassword from './pages/Auth/LupaPassword'
+import notFound from './pages/Auth/notFound'
+import Private from './pages/private'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/login" component={Login}/>
+        <Route path="/registrasi" component={Registrasi} />
+        <Route path="/lupa-password" component={LupaPassword}/>
+        <Route path="/pengaturan" component={Private} />
+        <Route path="/produk" component={Private} />
+        <Route component={notFound}/>
+      </Switch>
+    </Router>
   );
 }
 
